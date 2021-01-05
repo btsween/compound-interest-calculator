@@ -4,19 +4,22 @@ import { Line } from "react-chartjs-2";
 import InterestForm from "./InterestForm";
 
 function Calculator() {
-  const [chartData, setChartData] = useState([88, 35, 73, 82]);
+  const [chartData, setChartData] = useState({
+    //call same utility function get these values from intial state..
+    labels: [0, 1, 2, 3, 4, 5],
+    values: [88, 35, 73, 82],
+  });
 
   return (
     <div>
       <InterestForm onSetChartData={setChartData} />
       <div className="wrapper">
         <Line
-          options={{ responsive: false }}
           data={{
-            labels: [1, 2, 3, 4],
+            labels: chartData.labels,
             datasets: [
               {
-                data: chartData,
+                data: chartData.values,
                 backgroundColor: ["rgba(255, 99, 132, 0.6)"],
                 borderWidth: 3,
               },
