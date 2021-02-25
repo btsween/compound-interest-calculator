@@ -1,93 +1,64 @@
 import React from "react";
 import styled from "styled-components";
+import SlideShow from "./SlideShow";
 
 const CardWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-`;
+  justify-content: center;
+  padding: 2rem;
 
-const CardWrapperBlue = styled(CardWrapper)`
-  background-color: {"#ffffff"};
-`;
-
-const CardWrapperOrange = styled(CardWrapper)`
-  background-color: orange;
-`;
-
-const CardWrapperGreen = styled(CardWrapper)`
-  background-color: green;
+  @media (max-width: 650px) {
+    padding: 1rem;
+  }
 `;
 
 const CardHeader = styled.div`
   min-height: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 30px;
+  font-size: 35px;
   padding-top: 1rem;
   padding-bottom: 1rem;
-`;
-
-const HeaderLeft = styled.div`
-  margin-left: 1rem;
-`;
-
-const HeaderRight = styled.div`
-  margin-left: 1rem;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 1rem;
-`;
-
-const HeaderCenter = styled.div`
-  margin-left: 1rem;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 1rem;
+  font-color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  justify-content: center;
+  text-align: center;
 `;
 
 const CardBody = styled.div`
   padding: 1rem;
   display: flex;
-`;
-
-const BodyText = styled.div``;
-
-const BottomWrapper = styled.div`
-  display: flex;
-  background-color: orange;
-  justify-content: center;
-`;
-
-const InnerContainer = styled.div`
-  height: 10rem;
-  width: 20rem;
-  margin: 2rem;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 9px;
+  box-shadow: 0 0.5px 2px 0 rgba(0, 0, 0, 0.2);
+  width: 50rem;
+  max-width: 75vw;
+
+  @media (max-width: 650px) {
+    max-width: inherit;
+    width: inherit;
+    padding: 5px;
+  }
+`;
+
+const BodyText = styled.div`
+  text-align: center;
+  font-size: 20px;
+  padding-top: 0.75rem;
 `;
 
 /**
  * Current idea will be that ContentCard(s) will be used on both Experience and Portfolio pages and source content from the yml files.
  * In order to determine what content to source, will need to take params indicating the page.
  */
-function ContentCard() {
+function ContentCard(props) {
   return (
     <CardWrapper>
-      <CardHeader>
-        <HeaderCenter>Software Engineer, Cantina Consulting</HeaderCenter>
-      </CardHeader>
       <CardBody>
-        <BodyText>
-          Saved client 100k+/year by creating an in-house replacement for a
-          vender product.
-        </BodyText>
+        <CardHeader>{props.projectData.name}</CardHeader>
+        <SlideShow assets={props.projectData.assets} />
+        <BodyText>{props.projectData.description}</BodyText>
       </CardBody>
-      <BottomWrapper>
-        <InnerContainer>
-        </InnerContainer>
-        <InnerContainer>
-        </InnerContainer>
-      </BottomWrapper>
     </CardWrapper>
   );
 }
