@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createInterestInfo } from "../utilities/CompoundInterest";
 
 const InterestForm = ({ onSetChartData }) => {
   const [initialAmount, setInitialAmount] = useState("1000");
@@ -18,11 +19,33 @@ const InterestForm = ({ onSetChartData }) => {
 
     if (validForm) {
       // call a function to actually generate data for our chart..
-      onSetChartData([100, 100, 100, 100]);
+      console.log(createInterestInfo());
+      onSetChartData(
+        createInterestInfo(
+          initialAmount,
+          monthlyAmount,
+          timeInvested,
+          returnRate
+        )
+      );
     } else {
       // send an error ?
     }
   };
+
+  // const createInterestInfo = () => {
+  //   let i = 0;
+  //   let interestValues = [];
+  //   let currentVal = initialAmount;
+
+  //   while (i < timeInvested) {
+  //     interestValues.push(currentVal);
+  //     currentVal *= 1 + returnRate / 100;
+  //     i++;
+  //   }
+
+  //   onSetChartData(interestValues);
+  // };
 
   const validateIsNumeric = (input) => {
     const regex = /^[0-9]*$/gm; // TODO: need a fix here since this does not register negative values.
