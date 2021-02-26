@@ -19,7 +19,6 @@ const InterestForm = ({ onSetChartData }) => {
 
     if (validForm) {
       // call a function to actually generate data for our chart..
-      console.log(createInterestInfo());
       onSetChartData(
         createInterestInfo(
           initialAmount,
