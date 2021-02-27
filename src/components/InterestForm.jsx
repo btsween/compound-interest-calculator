@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { createInterestInfo } from "../utilities/CompoundInterest";
 
 const InterestForm = ({ onSetChartData }) => {
-  const [initialAmount, setInitialAmount] = useState("1000");
-  const [monthlyAmount, setMonthlyAmount] = useState("500");
-  const [timeInvested, setTimeInvested] = useState("45");
-  const [returnRate, setReturnRate] = useState("8");
+  const [initialAmount, setInitialAmount] = useState(1000);
+  const [monthlyAmount, setMonthlyAmount] = useState(500);
+  const [timeInvested, setTimeInvested] = useState(45);
+  const [returnRate, setReturnRate] = useState(8);
   const [formsValid, setFormsValid] = useState({
     INITIAL: true,
     MONTLY: true,
@@ -16,9 +16,11 @@ const InterestForm = ({ onSetChartData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let validForm = !Object.values(formsValid).includes(false);
-
+    console.log(initialAmount + 200);
+    console.log(monthlyAmount + 200);
+    console.log(timeInvested + 200);
+    console.log(returnRate + 200);
     if (validForm) {
-      // call a function to actually generate data for our chart..
       onSetChartData(
         createInterestInfo(
           initialAmount,
@@ -31,20 +33,6 @@ const InterestForm = ({ onSetChartData }) => {
       // send an error ?
     }
   };
-
-  // const createInterestInfo = () => {
-  //   let i = 0;
-  //   let interestValues = [];
-  //   let currentVal = initialAmount;
-
-  //   while (i < timeInvested) {
-  //     interestValues.push(currentVal);
-  //     currentVal *= 1 + returnRate / 100;
-  //     i++;
-  //   }
-
-  //   onSetChartData(interestValues);
-  // };
 
   const validateIsNumeric = (input) => {
     const regex = /^[0-9]*$/gm; // TODO: need a fix here since this does not register negative values.
@@ -60,7 +48,9 @@ const InterestForm = ({ onSetChartData }) => {
       setFormsValid((prevState) => ({ ...prevState, formName: false }));
       return;
     } else {
+      console.log("form has been validated: ", formName);
       inputRefined = parseInt(value);
+      console.log("form value is ", inputRefined + 100);
     }
 
     switch (formName) {
@@ -69,6 +59,7 @@ const InterestForm = ({ onSetChartData }) => {
           setFormsValid((prevState) => ({ ...prevState, INITIAL: false }));
         } else {
           setFormsValid((prevState) => ({ ...prevState, INITIAL: true }));
+          setInitialAmount(inputRefined);
         }
         break;
       case "MONTHLY":
@@ -76,6 +67,7 @@ const InterestForm = ({ onSetChartData }) => {
           setFormsValid((prevState) => ({ ...prevState, MONTLY: false }));
         } else {
           setFormsValid((prevState) => ({ ...prevState, MONTLY: true }));
+          setMonthlyAmount(inputRefined);
         }
         break;
       case "TIME":
@@ -83,6 +75,7 @@ const InterestForm = ({ onSetChartData }) => {
           setFormsValid((prevState) => ({ ...prevState, TIME: false }));
         } else {
           setFormsValid((prevState) => ({ ...prevState, TIME: true }));
+          setTimeInvested(inputRefined);
         }
         break;
       case "RATE":
@@ -90,6 +83,7 @@ const InterestForm = ({ onSetChartData }) => {
           setFormsValid((prevState) => ({ ...prevState, RATE: false }));
         } else {
           setFormsValid((prevState) => ({ ...prevState, RATE: true }));
+          setReturnRate(inputRefined);
         }
         break;
       default: {
