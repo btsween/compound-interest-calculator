@@ -1,7 +1,9 @@
 .App {
   display: flex;
+  flex-direction: column;
   background-color: rgb(247, 249, 252);
   color: rgba(0, 0, 0, 0.87);
+  flex: 1;
 }
 
 html,

@@ -3,17 +3,26 @@ import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import InterestForm from "./InterestForm";
 
+const CalculatorWrapper = styled.div`
+  flex: 1;
+`;
+
+const ChartWrapper = styled.div`
+  width: 60%;
+  height: 40%;
+  // TODO: cap these?
+`;
+
 function Calculator() {
   const [chartData, setChartData] = useState({
-    //call same utility function get these values from intial state..
-    labels: [0, 1, 2, 3, 4, 5],
-    values: [88, 35, 73, 82],
+    labels: [],
+    values: [],
   });
 
   return (
-    <div>
+    <CalculatorWrapper>
       <InterestForm onSetChartData={setChartData} />
-      <div className="wrapper">
+      <ChartWrapper className="wrapper">
         <Line
           data={{
             labels: chartData.labels,
@@ -26,8 +35,8 @@ function Calculator() {
             ],
           }}
         />
-      </div>
-    </div>
+      </ChartWrapper>
+    </CalculatorWrapper>
   );
 }
 
