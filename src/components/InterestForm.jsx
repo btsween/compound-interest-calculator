@@ -16,10 +16,6 @@ const InterestForm = ({ onSetChartData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let validForm = !Object.values(formsValid).includes(false);
-    console.log(initialAmount + 200);
-    console.log(monthlyAmount + 200);
-    console.log(timeInvested + 200);
-    console.log(returnRate + 200);
     if (validForm) {
       onSetChartData(
         createInterestInfo(
@@ -29,8 +25,6 @@ const InterestForm = ({ onSetChartData }) => {
           returnRate
         )
       );
-    } else {
-      // send an error ?
     }
   };
 
@@ -41,7 +35,7 @@ const InterestForm = ({ onSetChartData }) => {
   }, []);
 
   const validateIsNumeric = (input) => {
-    const regex = /^[0-9]*$/gm; // TODO: need a fix here since this does not register negative values.
+    const regex = /^[0-9]*$/gm;
     return regex.test(input);
   };
 
@@ -54,9 +48,7 @@ const InterestForm = ({ onSetChartData }) => {
       setFormsValid((prevState) => ({ ...prevState, formName: false }));
       return;
     } else {
-      console.log("form has been validated: ", formName);
       inputRefined = parseInt(value);
-      console.log("form value is ", inputRefined + 100);
     }
 
     switch (formName) {

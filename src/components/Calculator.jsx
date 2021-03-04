@@ -6,12 +6,19 @@ import Colors from "../assets/Colors";
 
 const CalculatorWrapper = styled.div`
   flex: 1;
-  // background-color: {Colors.lightBlue};
+  padding: 2rem;
+  background-color: ${Colors.offWhite};
 `;
 
 const ChartWrapper = styled.div`
   width: 60%;
   min-width: 600px;
+`;
+
+const CalculatorBody = styled.div`
+  background-color: ${Colors.offWhite};
+  display: flex;
+  flex-direction: column;
 `;
 
 function Calculator() {

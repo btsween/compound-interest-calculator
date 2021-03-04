@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Colors from "../../assets/Colors";
 
 const TextWrapper = styled.span`
   margin-top: 5px;
@@ -8,12 +9,12 @@ const TextWrapper = styled.span`
 `;
 
 const FooterWrapper = styled.div`
+  background-color: ${Colors.white};
   min-height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  background-color: #ffffff;
 `;
 
 function Footer() {
