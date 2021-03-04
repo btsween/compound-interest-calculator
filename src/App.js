@@ -4,6 +4,7 @@ import "./App.css";
 import Calculator from "./components/Calculator";
 import Footer from "./components/navigation/Footer";
 import TopNavigation from "./components/navigation/TopNavigation";
+import Colors from "./assets/Colors";
 
 class App extends Component {
   render() {

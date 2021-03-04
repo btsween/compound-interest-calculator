@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import InterestForm from "./InterestForm";
+import Colors from "../assets/Colors";
 
 const CalculatorWrapper = styled.div`
   flex: 1;
+  // background-color: {Colors.lightBlue};
 `;
 
 const ChartWrapper = styled.div`
   width: 60%;
-  height: 40%;
-  // TODO: cap these?
+  min-width: 600px;
 `;
 
 function Calculator() {
