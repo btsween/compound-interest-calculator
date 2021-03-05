@@ -11,8 +11,13 @@ const CalculatorWrapper = styled.div`
 `;
 
 const ChartWrapper = styled.div`
-  width: 60%;
-  min-width: 600px;
+  width: 80%;
+  // min-width: 600px;
+  justify-content: center;
+  padding: 2rem;
+  background-color: ${Colors.white};
+  margin: auto;
+  border-radius: 0.5rem;
 `;
 
 const CalculatorBody = styled.div`

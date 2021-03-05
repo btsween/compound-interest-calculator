@@ -1,5 +1,38 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { createInterestInfo } from "../utilities/CompoundInterest";
+import FormCard from "./FormCard";
+import Colors from "../assets/Colors";
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 30rem;
+`;
+
+const StyledInput = styled.button`
+  height: 2rem;
+  width: 6rem;
+  background-color: #4782da;
+  border-radius: 0.5rem;
+  color: ${Colors.white};
+`;
+
+const InfoWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  max-width: rem;
+  background-color: ${Colors.white};
+  flex-direction: column;
+  padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
 
 const InterestForm = ({ onSetChartData }) => {
   const [initialAmount, setInitialAmount] = useState(0);
@@ -88,44 +121,49 @@ const InterestForm = ({ onSetChartData }) => {
         console.log("Update to uknown form type : " + formName);
       }
     }
-    console.log(formsValid);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Starting Amount</label>
-      <input
-        type="text"
-        value={initialAmount}
-        required
-        onChange={(e) => setInitialAmount(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "INITIAL")}
-      />
-      <label>Amount per Month</label>
-      <input
-        type="text"
-        value={monthlyAmount}
-        required
-        onChange={(e) => setMonthlyAmount(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "MONTHLY")}
-      />
-      <label>Time Invested</label>
-      <input
-        type="text"
-        value={timeInvested}
-        required
-        onChange={(e) => setTimeInvested(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "TIME")}
-      />
-      <label>Rate of Return</label>
-      <input
-        type="text"
-        value={returnRate}
-        required
-        onChange={(e) => setReturnRate(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "RATE")}
-      />
-      <input type="submit" value="submit form" />
-    </form>
+    <StyledForm onSubmit={handleSubmit}>
+      <InputWrapper>
+        <FormCard
+          value={initialAmount}
+          handleBlur={handleBlur}
+          onChange={setInitialAmount}
+          labelText={"Initial Amount"}
+        />
+        <FormCard
+          value={monthlyAmount}
+          handleBlur={handleBlur}
+          onChange={setMonthlyAmount}
+          labelText={"Monthly Investment"}
+        />
+        <FormCard
+          value={timeInvested}
+          handleBlur={handleBlur}
+          onChange={setTimeInvested}
+          labelText={"Years Invested"}
+        />
+        <FormCard
+          value={returnRate}
+          handleBlur={handleBlur}
+          onChange={setReturnRate}
+          labelText={"Rate of Return"}
+        />
+      </InputWrapper>
+      <InfoWrapper>
+        <h1>Info</h1>
+        <span>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum."
+        </span>
+      </InfoWrapper>
+      <StyledInput type="submit">Calculate</StyledInput>
+    </StyledForm>
   );
 };
 
