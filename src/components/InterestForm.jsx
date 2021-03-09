@@ -1,11 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { createInterestInfo } from "../utilities/CompoundInterest";
+import FormCard from "./FormCard";
+import Colors from "../assets/Colors";
+import InfoCard from "./InfoCard";
+import InfoText from "../assets/content/InfoText";
+import FormNames from "../constants/FormNames";
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 30rem;
+
+  @media (min-width: 1200px) {
+    width: inherit;
+    max-width: 43rem;
+  }
+`;
+
+const StyledInput = styled.button`
+  background-color: #4782da;
+  font-family: Roboto-Medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  color: ${Colors.white};
+  text-decoration: none;
+  height: 5rem;
+  width: 12rem;
+  font-size: 18px;
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  border: solid 2px ${Colors.white};
+`;
+
+const FormWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+`;
 
 const InterestForm = ({ onSetChartData }) => {
-  const [initialAmount, setInitialAmount] = useState(1000);
-  const [monthlyAmount, setMonthlyAmount] = useState(500);
-  const [timeInvested, setTimeInvested] = useState(45);
-  const [returnRate, setReturnRate] = useState(8);
+  const [initialAmount, setInitialAmount] = useState(0);
+  const [monthlyAmount, setMonthlyAmount] = useState(100);
+  const [timeInvested, setTimeInvested] = useState(20);
+  const [returnRate, setReturnRate] = useState(5);
   const [formsValid, setFormsValid] = useState({
     INITIAL: true,
     MONTLY: true,
@@ -13,13 +60,11 @@ const InterestForm = ({ onSetChartData }) => {
     RATE: true,
   });
 
+  const [activeForm, setActiveForm] = useState(FormNames.INITIAL);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let validForm = !Object.values(formsValid).includes(false);
-    console.log(initialAmount + 200);
-    console.log(monthlyAmount + 200);
-    console.log(timeInvested + 200);
-    console.log(returnRate + 200);
     if (validForm) {
       onSetChartData(
         createInterestInfo(
@@ -29,13 +74,17 @@ const InterestForm = ({ onSetChartData }) => {
           returnRate
         )
       );
-    } else {
-      // send an error ?
     }
   };
 
+  useEffect(() => {
+    onSetChartData(
+      createInterestInfo(initialAmount, monthlyAmount, timeInvested, returnRate)
+    );
+  }, []);
+
   const validateIsNumeric = (input) => {
-    const regex = /^[0-9]*$/gm; // TODO: need a fix here since this does not register negative values.
+    const regex = /^[0-9]*$/gm;
     return regex.test(input);
   };
 
@@ -48,9 +97,7 @@ const InterestForm = ({ onSetChartData }) => {
       setFormsValid((prevState) => ({ ...prevState, formName: false }));
       return;
     } else {
-      console.log("form has been validated: ", formName);
       inputRefined = parseInt(value);
-      console.log("form value is ", inputRefined + 100);
     }
 
     switch (formName) {
@@ -90,44 +137,55 @@ const InterestForm = ({ onSetChartData }) => {
         console.log("Update to uknown form type : " + formName);
       }
     }
-    console.log(formsValid);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Starting Amount</label>
-      <input
-        type="text"
-        value={initialAmount}
-        required
-        onChange={(e) => setInitialAmount(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "INITIAL")}
-      />
-      <label>Amount per Month</label>
-      <input
-        type="text"
-        value={monthlyAmount}
-        required
-        onChange={(e) => setMonthlyAmount(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "MONTHLY")}
-      />
-      <label>Time Invested</label>
-      <input
-        type="text"
-        value={timeInvested}
-        required
-        onChange={(e) => setTimeInvested(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "TIME")}
-      />
-      <label>Rate of Return</label>
-      <input
-        type="text"
-        value={returnRate}
-        required
-        onChange={(e) => setReturnRate(e.target.value)}
-        onBlur={(e) => handleBlur(e.target.value, "RATE")}
-      />
-      <input type="submit" value="submit form" />
-    </form>
+    <FormWrapper>
+      <StyledForm onSubmit={handleSubmit}>
+        <InputWrapper>
+          <FormCard
+            value={initialAmount}
+            handleBlur={handleBlur}
+            onChange={setInitialAmount}
+            labelText={"Initial Amount"}
+          />
+          <FormCard
+            value={monthlyAmount}
+            handleBlur={handleBlur}
+            onChange={setMonthlyAmount}
+            labelText={"Monthly Investment"}
+          />
+          <FormCard
+            value={timeInvested}
+            handleBlur={handleBlur}
+            onChange={setTimeInvested}
+            labelText={"Years Invested"}
+          />
+          <FormCard
+            value={returnRate}
+            handleBlur={handleBlur}
+            onChange={setReturnRate}
+            labelText={"Rate of Return"}
+          />
+          <FormCard
+            value={returnRate}
+            handleBlur={handleBlur}
+            onChange={setReturnRate}
+            labelText={"Difference in Rates"}
+          />
+          <StyledInput type="submit">CALCULATE</StyledInput>
+        </InputWrapper>
+      </StyledForm>
+      {InfoText.info.map((info, index) => {
+        return (
+          <InfoCard
+            key={index}
+            id={info.id}
+            info={info}
+            activeForm={activeForm}
+          ></InfoCard>
+        );
+      })}
+    </FormWrapper>
   );
 };
 

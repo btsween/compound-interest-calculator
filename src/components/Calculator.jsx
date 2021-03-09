@@ -2,18 +2,34 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import InterestForm from "./InterestForm";
+import Colors from "../assets/Colors";
+
+const CalculatorWrapper = styled.div`
+  flex: 1;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: ${Colors.offWhite};
+`;
+
+const ChartWrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  width: 80%;
+  background-color: ${Colors.white};
+  border-radius: 0.5rem;
+`;
 
 function Calculator() {
   const [chartData, setChartData] = useState({
-    //call same utility function get these values from intial state..
-    labels: [0, 1, 2, 3, 4, 5],
-    values: [88, 35, 73, 82],
+    labels: [],
+    values: [],
   });
 
   return (
-    <div>
+    <CalculatorWrapper>
       <InterestForm onSetChartData={setChartData} />
-      <div className="wrapper">
+      <ChartWrapper className="wrapper">
         <Line
           data={{
             labels: chartData.labels,
@@ -26,8 +42,8 @@ function Calculator() {
             ],
           }}
         />
-      </div>
-    </div>
+      </ChartWrapper>
+    </CalculatorWrapper>
   );
 }
 

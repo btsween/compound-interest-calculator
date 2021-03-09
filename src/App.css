@@ -1,7 +1,10 @@
 .App {
   display: flex;
-  background-color: rgb(247, 249, 252);
+  flex-direction: column;
+  /* background-color: rgb(247, 249, 252); */
   color: rgba(0, 0, 0, 0.87);
+  flex: 1;
+  background-color: "#fff";
 }
 
 html,
@@ -95,8 +98,6 @@ video {
 
 button {
   all: unset;
-  color: blue;
-  -webkit-text-fill-color: blue;
   cursor: pointer;
 }
 
