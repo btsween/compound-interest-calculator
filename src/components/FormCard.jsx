@@ -29,7 +29,7 @@ const StyledInput = styled.input`
 
 function FormCard(props) {
   return (
-    <FormCardWrapper onClick={() => console.log("hello clcik")}>
+    <FormCardWrapper onClick={() => console.log("hello")}>
       <StyledLabel>{props.labelText}</StyledLabel>
       <StyledInput
         type="text"

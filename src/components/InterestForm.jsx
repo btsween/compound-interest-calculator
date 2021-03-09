@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { createInterestInfo } from "../utilities/CompoundInterest";
 import FormCard from "./FormCard";
 import Colors from "../assets/Colors";
+import InfoCard from "./InfoCard";
+import InfoText from "../assets/content/InfoText";
 
 const StyledForm = styled.form`
   display: flex;
@@ -13,24 +15,35 @@ const InputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 30rem;
+
+  @media (min-width: 1200px) {
+    width: inherit;
+    max-width: 43rem;
+  }
 `;
 
 const StyledInput = styled.button`
-  height: 2rem;
-  width: 6rem;
   background-color: #4782da;
-  border-radius: 0.5rem;
+  font-family: Roboto-Medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
   color: ${Colors.white};
+  text-decoration: none;
+  height: 5rem;
+  width: 12rem;
+  font-size: 18px;
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  border: solid 2px ${Colors.white};
 `;
 
-const InfoWrapper = styled.div`
+const FormWrapper = styled.div`
   display: flex;
-  flex: 1;
-  max-width: rem;
-  background-color: ${Colors.white};
-  flex-direction: column;
-  padding: 2rem;
-  margin-top: 1rem;
+  justify-content: space-around;
+  padding-bottom: 1rem;
   margin-bottom: 1rem;
 `;
 
@@ -123,47 +136,47 @@ const InterestForm = ({ onSetChartData }) => {
     }
   };
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <InputWrapper>
-        <FormCard
-          value={initialAmount}
-          handleBlur={handleBlur}
-          onChange={setInitialAmount}
-          labelText={"Initial Amount"}
-        />
-        <FormCard
-          value={monthlyAmount}
-          handleBlur={handleBlur}
-          onChange={setMonthlyAmount}
-          labelText={"Monthly Investment"}
-        />
-        <FormCard
-          value={timeInvested}
-          handleBlur={handleBlur}
-          onChange={setTimeInvested}
-          labelText={"Years Invested"}
-        />
-        <FormCard
-          value={returnRate}
-          handleBlur={handleBlur}
-          onChange={setReturnRate}
-          labelText={"Rate of Return"}
-        />
-      </InputWrapper>
-      <InfoWrapper>
-        <h1>Info</h1>
-        <span>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </span>
-      </InfoWrapper>
-      <StyledInput type="submit">Calculate</StyledInput>
-    </StyledForm>
+    <FormWrapper>
+      <StyledForm onSubmit={handleSubmit}>
+        <InputWrapper>
+          <FormCard
+            value={initialAmount}
+            handleBlur={handleBlur}
+            onChange={setInitialAmount}
+            labelText={"Initial Amount"}
+          />
+          <FormCard
+            value={monthlyAmount}
+            handleBlur={handleBlur}
+            onChange={setMonthlyAmount}
+            labelText={"Monthly Investment"}
+          />
+          <FormCard
+            value={timeInvested}
+            handleBlur={handleBlur}
+            onChange={setTimeInvested}
+            labelText={"Years Invested"}
+          />
+          <FormCard
+            value={returnRate}
+            handleBlur={handleBlur}
+            onChange={setReturnRate}
+            labelText={"Rate of Return"}
+          />
+          <FormCard
+            value={returnRate}
+            handleBlur={handleBlur}
+            onChange={setReturnRate}
+            labelText={"Difference in Rates"}
+          />
+          <StyledInput type="submit">CALCULATE</StyledInput>
+        </InputWrapper>
+      </StyledForm>
+      {InfoText.info.map(() => {
+        return <InfoCard></InfoCard>;
+      })}
+      {/* <InfoCard></InfoCard> */}
+    </FormWrapper>
   );
 };
 
