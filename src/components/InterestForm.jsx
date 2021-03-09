@@ -46,6 +46,7 @@ const FormWrapper = styled.div`
   justify-content: space-around;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 `;
 
 const InterestForm = ({ onSetChartData }) => {
@@ -142,35 +143,46 @@ const InterestForm = ({ onSetChartData }) => {
     <FormWrapper>
       <StyledForm onSubmit={handleSubmit}>
         <InputWrapper>
+          {/* TODO: form cards should be dynamic */}
           <FormCard
             value={initialAmount}
             handleBlur={handleBlur}
             onChange={setInitialAmount}
             labelText={"Initial Amount"}
+            onClick={setActiveForm}
+            form={FormNames.INITIAL}
           />
           <FormCard
             value={monthlyAmount}
             handleBlur={handleBlur}
             onChange={setMonthlyAmount}
             labelText={"Monthly Investment"}
+            onClick={setActiveForm}
+            form={FormNames.MONTHLY}
           />
           <FormCard
             value={timeInvested}
             handleBlur={handleBlur}
             onChange={setTimeInvested}
             labelText={"Years Invested"}
+            onClick={setActiveForm}
+            form={FormNames.TIME}
           />
           <FormCard
             value={returnRate}
             handleBlur={handleBlur}
             onChange={setReturnRate}
             labelText={"Rate of Return"}
+            onClick={setActiveForm}
+            form={FormNames.RATE}
           />
           <FormCard
             value={returnRate}
             handleBlur={handleBlur}
             onChange={setReturnRate}
             labelText={"Difference in Rates"}
+            onClick={setActiveForm}
+            form={FormNames.DIFFERENCE}
           />
           <StyledInput type="submit">CALCULATE</StyledInput>
         </InputWrapper>

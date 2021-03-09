@@ -15,6 +15,7 @@ const InfoCardWrapper = styled.div`
   align-items: center;
   max-width: 800px;
   display: none;
+  min-width: 35rem;
 
   &.active {
     display: flex;

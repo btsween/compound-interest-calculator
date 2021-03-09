@@ -29,14 +29,14 @@ const StyledInput = styled.input`
 
 function FormCard(props) {
   return (
-    <FormCardWrapper onClick={() => console.log("hello")}>
+    <FormCardWrapper onClick={() => props.onClick(props.form)}>
       <StyledLabel>{props.labelText}</StyledLabel>
       <StyledInput
         type="text"
         value={props.value}
         required
         onChange={(e) => props.onChange(e.target.value)}
-        onBlur={(e) => props.handleBlur(e.target.value, "INITIAL")}
+        onBlur={(e) => props.handleBlur(e.target.value, props.form)}
       />
     </FormCardWrapper>
   );
