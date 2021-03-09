@@ -5,6 +5,7 @@ import FormCard from "./FormCard";
 import Colors from "../assets/Colors";
 import InfoCard from "./InfoCard";
 import InfoText from "../assets/content/InfoText";
+import FormNames from "../constants/FormNames";
 
 const StyledForm = styled.form`
   display: flex;
@@ -58,6 +59,8 @@ const InterestForm = ({ onSetChartData }) => {
     TIME: true,
     RATE: true,
   });
+
+  const [activeForm, setActiveForm] = useState(FormNames.INITIAL);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -172,10 +175,16 @@ const InterestForm = ({ onSetChartData }) => {
           <StyledInput type="submit">CALCULATE</StyledInput>
         </InputWrapper>
       </StyledForm>
-      {InfoText.info.map(() => {
-        return <InfoCard></InfoCard>;
+      {InfoText.info.map((info, index) => {
+        return (
+          <InfoCard
+            key={index}
+            id={info.id}
+            info={info}
+            activeForm={activeForm}
+          ></InfoCard>
+        );
       })}
-      {/* <InfoCard></InfoCard> */}
     </FormWrapper>
   );
 };

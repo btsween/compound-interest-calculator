@@ -14,6 +14,11 @@ const InfoCardWrapper = styled.div`
   margin-bottom: 1rem;
   align-items: center;
   max-width: 800px;
+  display: none;
+
+  &.active {
+    display: flex;
+  }
 `;
 
 const CardHeader = styled.span`
@@ -35,20 +40,18 @@ const InfoText = styled.span`
   text-align: center;
 `;
 
-function InfoCard() {
+function InfoCard(props) {
   return (
-    <InfoCardWrapper>
-      <CardHeader></CardHeader>
+    <InfoCardWrapper
+      className={props.activeForm === props.info.formName ? "active" : ""}
+    >
+      <CardHeader>{props.info.header}</CardHeader>
       <PhotoWrapper>
         <CompoundInterestPhoto />
       </PhotoWrapper>
-      <InfoText>
-        First span will talk about 'M', which might represent the variable name.
-      </InfoText>
-      <InfoText>
-        Then talk about the effects of that variable and how they can impact the
-        overall equation.
-      </InfoText>
+      {props.info.body.map((text, index) => {
+        return <InfoText key={index}>{text}</InfoText>;
+      })}
     </InfoCardWrapper>
   );
 }

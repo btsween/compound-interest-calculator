@@ -1,3 +1,5 @@
+const FormNames = require("../../constants/FormNames");
+
 module.exports = {
   info: [
     {
@@ -7,6 +9,7 @@ module.exports = {
         `The growth over time is directly proportional to 'P', which makes it an important variable but not as important as time or rate!`,
       ],
       id: "info-card-initial-value",
+      formName: FormNames.INITIAL,
     },
     {
       header: "Monthly Contribution",
@@ -16,6 +19,7 @@ module.exports = {
         `A small amount contributed over a long period of time can make a huge impact!`,
       ],
       id: "info-card-monthly-contribution",
+      formName: FormNames.MONTHLY,
     },
     {
       header: "Rate of Return",
@@ -25,6 +29,7 @@ module.exports = {
         `Try a range of 'R' values to see the difference.`,
       ],
       id: "info-card-rate",
+      formName: FormNames.RATE,
     },
     {
       header: "Time",
@@ -34,6 +39,7 @@ module.exports = {
         `Try a range of 'R' values to see the difference.`,
       ],
       id: "info-card-time",
+      formName: "TIME",
     },
     {
       header: "Difference of Rates",
@@ -43,6 +49,7 @@ module.exports = {
         `Try a range of 'R' values to see the difference.`,
       ],
       id: "info-card-difference",
+      formName: FormNames.DIFFERENCE,
     },
   ],
 };
