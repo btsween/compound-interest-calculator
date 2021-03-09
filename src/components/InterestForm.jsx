@@ -15,11 +15,11 @@ const StyledForm = styled.form`
 const InputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 30rem;
+  width: 35rem;
 
   @media (min-width: 1200px) {
     width: inherit;
-    max-width: 43rem;
+    max-width: 48rem;
   }
 `;
 

@@ -5,11 +5,11 @@ import Colors from "../assets/Colors";
 const FormCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-bewteen;
+  justify-content: space-evenly;
   padding: 0.5rem;
   background-color: ${Colors.white};
-  height: 5rem;
-  width: 12rem;
+  height: 7rem;
+  width: 14rem;
   font-size: 18px;
   margin: 1rem 0.5rem 1rem 0.5rem;
   border-radius: 0.5rem;
