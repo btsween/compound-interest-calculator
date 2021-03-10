@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Colors from "../assets/Colors";
-import { ReactComponent as CompoundInterestPhoto } from "../assets/photos/compound-interest.svg";
+import { ReactComponent as CompoundInterestPhoto } from "../assets/images/compound-interest.svg";
 
 const InfoCardWrapper = styled.div`
   display: flex;
@@ -12,10 +12,13 @@ const InfoCardWrapper = styled.div`
   padding: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   align-items: center;
-  max-width: 800px;
+  max-width: 850px;
   display: none;
-  min-width: 35rem;
+  min-width: 30rem;
+  border-radius: 0.5rem;
 
   &.active {
     display: flex;

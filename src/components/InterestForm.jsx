@@ -15,11 +15,11 @@ const StyledForm = styled.form`
 const InputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 35rem;
+  max-width: 31rem;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1400px) {
     width: inherit;
-    max-width: 48rem;
+    max-width: 43rem;
   }
 `;
 
@@ -32,13 +32,12 @@ const StyledInput = styled.button`
   padding: 0.5rem;
   color: ${Colors.white};
   text-decoration: none;
-  height: 5rem;
+  height: 6rem;
   width: 12rem;
   font-size: 18px;
   margin: 1rem 0.5rem 1rem 0.5rem;
   border-radius: 0.5rem;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  border: solid 2px ${Colors.white};
 `;
 
 const FormWrapper = styled.div`

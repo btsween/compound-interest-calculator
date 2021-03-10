@@ -8,8 +8,8 @@ const FormCardWrapper = styled.div`
   justify-content: space-evenly;
   padding: 0.5rem;
   background-color: ${Colors.white};
-  height: 7rem;
-  width: 14rem;
+  height: 6rem;
+  width: 12rem;
   font-size: 18px;
   margin: 1rem 0.5rem 1rem 0.5rem;
   border-radius: 0.5rem;
