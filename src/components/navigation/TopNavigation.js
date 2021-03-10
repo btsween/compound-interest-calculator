@@ -23,9 +23,19 @@ const Menu = styled.div`
   display: flex;
 `;
 
-const Tab = styled.div`
+const Tab = styled.a`
   font-size: 24px;
   margin: 2rem;
+  padding-bottom: 4px;
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 2px solid ${Colors.white};
+  }
+
+  &:hover {
+    border-bottom: 2px solid ${Colors.white};
+  }
 `;
 
 function TopNavigation() {
@@ -33,7 +43,7 @@ function TopNavigation() {
     <TopNavWrapper>
       <HeaderTitle>Compound Interest Calculator</HeaderTitle>
       <Menu>
-        <Tab>apps</Tab>
+        <Tab className="active">apps</Tab>
         <Tab>portfolio</Tab>
       </Menu>
     </TopNavWrapper>
