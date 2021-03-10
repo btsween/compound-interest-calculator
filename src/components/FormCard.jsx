@@ -53,11 +53,19 @@ function FormCard(props) {
         <OptionsContainer>
           <OptionWrapper>
             <label>Monthly</label>
-            <input type="radio" />
+            <input
+              type="radio"
+              checked={props.value === "MONTHLY" ? true : false}
+              onChange={() => props.onChange("MONTHLY")}
+            />
           </OptionWrapper>
           <OptionWrapper>
             <label>Yearly</label>
-            <input type="radio" />
+            <input
+              type="radio"
+              checked={props.value === "YEARLY" ? true : false}
+              onChange={() => props.onChange("YEARLY")}
+            />
           </OptionWrapper>
         </OptionsContainer>
       ) : (
