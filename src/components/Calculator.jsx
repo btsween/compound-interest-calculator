@@ -29,14 +29,15 @@ function Calculator() {
   return (
     <CalculatorWrapper>
       <InterestForm onSetChartData={setChartData} />
-      <ChartWrapper className="wrapper">
+      <ChartWrapper>
         <Line
           data={{
             labels: chartData.labels,
             datasets: [
               {
+                label: "Compounded Interest",
                 data: chartData.values,
-                backgroundColor: ["rgba(255, 99, 132, 0.6)"],
+                backgroundColor: [Colors.lightBlue],
                 borderWidth: 3,
               },
             ],

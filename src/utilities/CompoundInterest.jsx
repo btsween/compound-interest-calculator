@@ -9,7 +9,7 @@ export const createInterestInfo = (initial, monthly, time, rate) => {
     current += (current * rate) / 100 / 12;
     if (idx % 12 === 0) {
       xVals.push(idx / 12);
-      yVals.push(current);
+      yVals.push(Math.round(current));
     }
   }
   return {

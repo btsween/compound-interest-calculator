@@ -15,9 +15,9 @@ const StyledForm = styled.form`
 const InputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 30rem;
+  max-width: 31rem;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1400px) {
     width: inherit;
     max-width: 43rem;
   }
@@ -32,13 +32,12 @@ const StyledInput = styled.button`
   padding: 0.5rem;
   color: ${Colors.white};
   text-decoration: none;
-  height: 5rem;
+  height: 6rem;
   width: 12rem;
   font-size: 18px;
   margin: 1rem 0.5rem 1rem 0.5rem;
   border-radius: 0.5rem;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  border: solid 2px ${Colors.white};
 `;
 
 const FormWrapper = styled.div`
@@ -46,6 +45,7 @@ const FormWrapper = styled.div`
   justify-content: space-around;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 `;
 
 const InterestForm = ({ onSetChartData }) => {
@@ -101,7 +101,7 @@ const InterestForm = ({ onSetChartData }) => {
     }
 
     switch (formName) {
-      case "INITIAL":
+      case FormNames.INITIAL:
         if (inputRefined < 0 || inputRefined > 20000000) {
           setFormsValid((prevState) => ({ ...prevState, INITIAL: false }));
         } else {
@@ -109,7 +109,7 @@ const InterestForm = ({ onSetChartData }) => {
           setInitialAmount(inputRefined);
         }
         break;
-      case "MONTHLY":
+      case FormNames.MONTHLY:
         if (inputRefined < 0 || inputRefined > 1000000) {
           setFormsValid((prevState) => ({ ...prevState, MONTLY: false }));
         } else {
@@ -117,7 +117,7 @@ const InterestForm = ({ onSetChartData }) => {
           setMonthlyAmount(inputRefined);
         }
         break;
-      case "TIME":
+      case FormNames.TIME:
         if (inputRefined < 0 || inputRefined > 100) {
           setFormsValid((prevState) => ({ ...prevState, TIME: false }));
         } else {
@@ -125,7 +125,7 @@ const InterestForm = ({ onSetChartData }) => {
           setTimeInvested(inputRefined);
         }
         break;
-      case "RATE":
+      case FormNames.RATE:
         if (inputRefined < 0 || inputRefined > 100) {
           setFormsValid((prevState) => ({ ...prevState, RATE: false }));
         } else {
@@ -142,35 +142,51 @@ const InterestForm = ({ onSetChartData }) => {
     <FormWrapper>
       <StyledForm onSubmit={handleSubmit}>
         <InputWrapper>
+          {/* TODO: form cards should be dynamic */}
           <FormCard
             value={initialAmount}
             handleBlur={handleBlur}
             onChange={setInitialAmount}
             labelText={"Initial Amount"}
+            onClick={setActiveForm}
+            form={FormNames.INITIAL}
+            activeForm={activeForm}
           />
           <FormCard
             value={monthlyAmount}
             handleBlur={handleBlur}
             onChange={setMonthlyAmount}
             labelText={"Monthly Investment"}
+            onClick={setActiveForm}
+            form={FormNames.MONTHLY}
+            activeForm={activeForm}
           />
           <FormCard
             value={timeInvested}
             handleBlur={handleBlur}
             onChange={setTimeInvested}
             labelText={"Years Invested"}
+            onClick={setActiveForm}
+            form={FormNames.TIME}
+            activeForm={activeForm}
           />
           <FormCard
             value={returnRate}
             handleBlur={handleBlur}
             onChange={setReturnRate}
             labelText={"Rate of Return"}
+            onClick={setActiveForm}
+            form={FormNames.RATE}
+            activeForm={activeForm}
           />
           <FormCard
             value={returnRate}
             handleBlur={handleBlur}
             onChange={setReturnRate}
             labelText={"Difference in Rates"}
+            onClick={setActiveForm}
+            form={FormNames.DIFFERENCE}
+            activeForm={activeForm}
           />
           <StyledInput type="submit">CALCULATE</StyledInput>
         </InputWrapper>
