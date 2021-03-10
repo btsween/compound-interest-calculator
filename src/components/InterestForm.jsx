@@ -185,7 +185,7 @@ const InterestForm = ({ onSetChartData }) => {
             onChange={setReturnRate}
             labelText={"Difference in Rates"}
             onClick={setActiveForm}
-            form={FormNames.DIFFERENCE}
+            form={FormNames.COMPOUND}
             activeForm={activeForm}
           />
           <StyledInput type="submit">CALCULATE</StyledInput>
