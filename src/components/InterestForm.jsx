@@ -101,7 +101,7 @@ const InterestForm = ({ onSetChartData }) => {
     }
 
     switch (formName) {
-      case "INITIAL":
+      case FormNames.INITIAL:
         if (inputRefined < 0 || inputRefined > 20000000) {
           setFormsValid((prevState) => ({ ...prevState, INITIAL: false }));
         } else {
@@ -109,7 +109,7 @@ const InterestForm = ({ onSetChartData }) => {
           setInitialAmount(inputRefined);
         }
         break;
-      case "MONTHLY":
+      case FormNames.MONTHLY:
         if (inputRefined < 0 || inputRefined > 1000000) {
           setFormsValid((prevState) => ({ ...prevState, MONTLY: false }));
         } else {
@@ -117,7 +117,7 @@ const InterestForm = ({ onSetChartData }) => {
           setMonthlyAmount(inputRefined);
         }
         break;
-      case "TIME":
+      case FormNames.TIME:
         if (inputRefined < 0 || inputRefined > 100) {
           setFormsValid((prevState) => ({ ...prevState, TIME: false }));
         } else {
@@ -125,7 +125,7 @@ const InterestForm = ({ onSetChartData }) => {
           setTimeInvested(inputRefined);
         }
         break;
-      case "RATE":
+      case FormNames.RATE:
         if (inputRefined < 0 || inputRefined > 100) {
           setFormsValid((prevState) => ({ ...prevState, RATE: false }));
         } else {
@@ -150,6 +150,7 @@ const InterestForm = ({ onSetChartData }) => {
             labelText={"Initial Amount"}
             onClick={setActiveForm}
             form={FormNames.INITIAL}
+            activeForm={activeForm}
           />
           <FormCard
             value={monthlyAmount}
@@ -158,6 +159,7 @@ const InterestForm = ({ onSetChartData }) => {
             labelText={"Monthly Investment"}
             onClick={setActiveForm}
             form={FormNames.MONTHLY}
+            activeForm={activeForm}
           />
           <FormCard
             value={timeInvested}
@@ -166,6 +168,7 @@ const InterestForm = ({ onSetChartData }) => {
             labelText={"Years Invested"}
             onClick={setActiveForm}
             form={FormNames.TIME}
+            activeForm={activeForm}
           />
           <FormCard
             value={returnRate}
@@ -174,6 +177,7 @@ const InterestForm = ({ onSetChartData }) => {
             labelText={"Rate of Return"}
             onClick={setActiveForm}
             form={FormNames.RATE}
+            activeForm={activeForm}
           />
           <FormCard
             value={returnRate}
@@ -182,6 +186,7 @@ const InterestForm = ({ onSetChartData }) => {
             labelText={"Difference in Rates"}
             onClick={setActiveForm}
             form={FormNames.DIFFERENCE}
+            activeForm={activeForm}
           />
           <StyledInput type="submit">CALCULATE</StyledInput>
         </InputWrapper>

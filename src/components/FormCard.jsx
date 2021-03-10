@@ -14,6 +14,10 @@ const FormCardWrapper = styled.div`
   margin: 1rem 0.5rem 1rem 0.5rem;
   border-radius: 0.5rem;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
+  &.active {
+    border: solid 1px ${Colors.darkBlue};
+  }
 `;
 
 const StyledLabel = styled.label`
@@ -29,7 +33,10 @@ const StyledInput = styled.input`
 
 function FormCard(props) {
   return (
-    <FormCardWrapper onClick={() => props.onClick(props.form)}>
+    <FormCardWrapper
+      onClick={() => props.onClick(props.form)}
+      className={props.form === props.activeForm ? "active" : ""}
+    >
       <StyledLabel>{props.labelText}</StyledLabel>
       <StyledInput
         type="text"
