@@ -3,5 +3,5 @@ module.exports = {
   MONTHLY: "MONTHLY",
   TIME: "TIME",
   RATE: "RATE",
-  DIFFERENCE: "DIFFERENCE",
+  COMPOUND: "COMPOUND",
 };

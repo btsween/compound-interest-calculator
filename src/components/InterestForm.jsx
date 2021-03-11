@@ -5,7 +5,7 @@ import FormCard from "./FormCard";
 import Colors from "../assets/Colors";
 import InfoCard from "./InfoCard";
 import InfoText from "../assets/content/InfoText";
-import FormNames from "../constants/FormNames";
+import FormNames, { COMPOUND } from "../constants/FormNames";
 
 const StyledForm = styled.form`
   display: flex;
@@ -62,6 +62,7 @@ const InterestForm = ({ onSetChartData }) => {
 
   const [activeForm, setActiveForm] = useState(FormNames.INITIAL);
 
+  const [compoundingSchedule, setCompoundingSchedule] = useState("MONTHLY");
   const handleSubmit = (e) => {
     e.preventDefault();
     let validForm = !Object.values(formsValid).includes(false);
@@ -71,7 +72,8 @@ const InterestForm = ({ onSetChartData }) => {
           initialAmount,
           monthlyAmount,
           timeInvested,
-          returnRate
+          returnRate,
+          compoundingSchedule === FormNames.MONTHLY
         )
       );
     }
@@ -142,7 +144,7 @@ const InterestForm = ({ onSetChartData }) => {
     <FormWrapper>
       <StyledForm onSubmit={handleSubmit}>
         <InputWrapper>
-          {/* TODO: form cards should be dynamic */}
+          {/* TODO: form cards should be dynamic.. map from state?*/}
           <FormCard
             value={initialAmount}
             handleBlur={handleBlur}
@@ -180,12 +182,12 @@ const InterestForm = ({ onSetChartData }) => {
             activeForm={activeForm}
           />
           <FormCard
-            value={returnRate}
+            value={compoundingSchedule}
             handleBlur={handleBlur}
-            onChange={setReturnRate}
+            onChange={setCompoundingSchedule}
             labelText={"Difference in Rates"}
             onClick={setActiveForm}
-            form={FormNames.DIFFERENCE}
+            form={FormNames.COMPOUND}
             activeForm={activeForm}
           />
           <StyledInput type="submit">CALCULATE</StyledInput>

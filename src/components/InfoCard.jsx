@@ -28,6 +28,7 @@ const InfoCardWrapper = styled.div`
 const CardHeader = styled.span`
   font-size: 24px;
   margin-bottom: 1rem;
+  font-family: Roboto-Medium;
 `;
 
 const PhotoWrapper = styled.div`

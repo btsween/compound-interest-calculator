@@ -49,7 +49,7 @@ module.exports = {
         `Try a range of 'R' values to see the difference.`,
       ],
       id: "info-card-difference",
-      formName: FormNames.DIFFERENCE,
+      formName: FormNames.COMPOUND,
     },
   ],
 };
