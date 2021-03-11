@@ -35,12 +35,21 @@ function Calculator() {
             labels: chartData.labels,
             datasets: [
               {
-                label: "Compounded Interest",
                 data: chartData.values,
                 backgroundColor: [Colors.lightBlue],
                 borderWidth: 3,
               },
             ],
+          }}
+          options={{
+            title: {
+              display: true,
+              text: "Compound Interest",
+              fontSize: 26,
+            },
+            legend: {
+              display: false,
+            },
           }}
         />
       </ChartWrapper>
