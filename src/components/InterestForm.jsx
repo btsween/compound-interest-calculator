@@ -5,7 +5,7 @@ import FormCard from "./FormCard";
 import Colors from "../assets/Colors";
 import InfoCard from "./InfoCard";
 import InfoText from "../assets/content/InfoText";
-import FormNames from "../constants/FormNames";
+import FormNames, { COMPOUND } from "../constants/FormNames";
 
 const StyledForm = styled.form`
   display: flex;
@@ -72,7 +72,8 @@ const InterestForm = ({ onSetChartData }) => {
           initialAmount,
           monthlyAmount,
           timeInvested,
-          returnRate
+          returnRate,
+          compoundingSchedule === FormNames.MONTHLY
         )
       );
     }
