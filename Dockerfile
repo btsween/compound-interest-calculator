@@ -8,5 +8,4 @@ RUN npm install
 
 COPY . .
 
-EXPOSE ${PORT} 
 CMD [ "node", "server.js" ]
