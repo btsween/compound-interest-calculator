@@ -144,7 +144,6 @@ const InterestForm = ({ onSetChartData }) => {
     <FormWrapper>
       <StyledForm onSubmit={handleSubmit}>
         <InputWrapper>
-          {/* TODO: form cards should be dynamic.. map from state?*/}
           <FormCard
             value={initialAmount}
             handleBlur={handleBlur}
@@ -185,7 +184,7 @@ const InterestForm = ({ onSetChartData }) => {
             value={compoundingSchedule}
             handleBlur={handleBlur}
             onChange={setCompoundingSchedule}
-            labelText={"Difference in Rates"}
+            labelText={"Compounding Period"}
             onClick={setActiveForm}
             form={FormNames.COMPOUND}
             activeForm={activeForm}
