@@ -44,7 +44,7 @@ function TopNavigation() {
       <HeaderTitle>Compound Interest Calculator</HeaderTitle>
       <Menu>
         <Tab className="active">apps</Tab>
-        <Tab>portfolio</Tab>
+        <Tab href="https://www.bryansweeney.io">portfolio</Tab>
       </Menu>
     </TopNavWrapper>
   );
