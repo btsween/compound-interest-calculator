@@ -7,9 +7,9 @@ const FormCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 0.5rem;
+  padding: 0.7rem;
   background-color: ${Colors.white};
-  height: 6rem;
+  height: 6.5rem;
   width: 12rem;
   font-size: 18px;
   margin: 1rem 0.5rem 1rem 0.5rem;

@@ -19,6 +19,7 @@ const InfoCardWrapper = styled.div`
   display: none;
   min-width: 30rem;
   border-radius: 0.5rem;
+  justify-content: space-evenly;
 
   &.active {
     display: flex;
@@ -34,7 +35,9 @@ const CardHeader = styled.span`
 const PhotoWrapper = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  background-color: grey;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: ${Colors.offWhite};
   opacity: 0.7; // TODO:  better background color..
 `;
 
