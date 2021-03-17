@@ -6,7 +6,8 @@ module.exports = {
       header: "Initial Value",
       body: [
         `Initial value is represnted as 'P', and represents the amount before compounding takes place.`,
-        `The growth over time is directly proportional to 'P', which makes it an important variable but not as important as time or rate!`,
+        `Although starting amount is important, some of the most impressive changes come from time and rate of return.`,
+        `Try both large and small values for 'P' to see how it affects total return.`,
       ],
       id: "info-card-initial-value",
       formName: FormNames.INITIAL,
@@ -14,9 +15,9 @@ module.exports = {
     {
       header: "Monthly Contribution",
       body: [
-        `Monthly contribution is not represented in the above equation, but can be viewed as an increase in 'P' per month.`,
-        `This model applies the contribution before the monthly compounding is applied.`,
-        `A small amount contributed over a long period of time can make a huge impact!`,
+        `As the above equation is simplified to not include contributions, this variable is not accounted for.`,
+        `In this model, Monthly Conribution can be thought of as a change in 'P' at each compounding period.`,
+        `A monthly contribution is a great way to offset a low initial amount.`,
       ],
       id: "info-card-monthly-contribution",
       formName: FormNames.MONTHLY,
@@ -24,9 +25,9 @@ module.exports = {
     {
       header: "Rate of Return",
       body: [
-        `Rate of return is represented as 'R' in the above equation, and represents the percent rate of growth per unit of time (years in this model).`,
-        `Since 'R' is an exponential term, it can make a huge impact the overall calculation!`,
-        `Try a range of 'R' values to see the difference.`,
+        `Rate of return is represented as 'r' in the above equation, and represents the percent rate of growth per unit of time (years in this model).`,
+        `Stock market returns have been about 5% - 8% annualized, small differences to rate over time have huge impact.`,
+        `Enter a percent rate of return (0 - 50), and observe how crucial this is to growth.`,
       ],
       id: "info-card-rate",
       formName: FormNames.RATE,
@@ -34,19 +35,19 @@ module.exports = {
     {
       header: "Time",
       body: [
-        `Rate of return is represented as 'R' in the above equation, and represents the percent rate of growth per unit of time (years in this model).`,
-        `Since 'R' is an exponential term, it can make a huge impact the overall calculation!`,
-        `Try a range of 'R' values to see the difference.`,
+        `Time invested is represented as 't', and is measured in years invested in this model.`,
+        `As 't' falls in the exponent of the equation, it will have a big impact.`,
+        `See the difference between hypothetical values 30 and 35, just a few years difference can lead to huge growth because this is exponential.`,
       ],
       id: "info-card-time",
       formName: "TIME",
     },
     {
-      header: "Difference of Rates",
+      header: "Compounding Period",
       body: [
-        `Rate of return is represented as 'R' in the above equation, and represents the percent rate of growth per unit of time (years in this model).`,
-        `Since 'R' is an exponential term, it can make a huge impact the overall calculation!`,
-        `Try a range of 'R' values to see the difference.`,
+        `Compounding period is represented as 'n', and represents the amount of times compounded per unit of time (years in this model).`,
+        `This factor may not be in our control always, but shorter compounding periods are beneficial to growth.`,
+        `Try out two common compounding periods in the model.`,
       ],
       id: "info-card-difference",
       formName: FormNames.COMPOUND,
