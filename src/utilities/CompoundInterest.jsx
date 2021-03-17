@@ -5,7 +5,6 @@ export const createInterestInfo = (
   rate,
   isMonthlyCompoudnding
 ) => {
-  // TODO: formula for interest calculation?
   let compoundingInterval = isMonthlyCompoudnding === true ? 12 : 1;
   let yVals = [initial];
   let xVals = [0];
