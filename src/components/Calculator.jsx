@@ -29,7 +29,7 @@ function Calculator() {
   return (
     <CalculatorWrapper>
       <InterestForm onSetChartData={setChartData} />
-      <ChartWrapper>
+      <ChartWrapper id="calculator-line-chart">
         <Line
           data={{
             labels: chartData.labels,

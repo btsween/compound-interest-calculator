@@ -189,7 +189,14 @@ const InterestForm = ({ onSetChartData }) => {
             form={FormNames.COMPOUND}
             activeForm={activeForm}
           />
-          <StyledInput type="submit">CALCULATE</StyledInput>
+          <StyledInput
+            onClick={() => {
+              document.location.href = "#calculator-line-chart";
+            }}
+            type="submit"
+          >
+            CALCULATE
+          </StyledInput>
         </InputWrapper>
       </StyledForm>
       {InfoText.info.map((info, index) => {
