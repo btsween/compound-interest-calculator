@@ -12,8 +12,8 @@ export const createInterestInfo = (
   let current = initial;
 
   for (let idx = 1; idx <= time * compoundingInterval; idx++) {
-    current += (monthly * 12) / compoundingInterval;
     current += (current * rate) / 100 / compoundingInterval;
+    current += (monthly * 12) / compoundingInterval;
     if (idx % 12 === 0 && isMonthlyCompoudnding) {
       xVals.push(idx / 12);
       yVals.push(Math.round(current));

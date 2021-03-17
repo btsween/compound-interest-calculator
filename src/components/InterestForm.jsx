@@ -19,7 +19,7 @@ const InputWrapper = styled.div`
 
   @media (min-width: 1400px) {
     width: inherit;
-    max-width: 43rem;
+    max-width: 44rem;
   }
 `;
 
@@ -61,8 +61,8 @@ const InterestForm = ({ onSetChartData }) => {
   });
 
   const [activeForm, setActiveForm] = useState(FormNames.INITIAL);
-
   const [compoundingSchedule, setCompoundingSchedule] = useState("MONTHLY");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let validForm = !Object.values(formsValid).includes(false);
@@ -189,7 +189,14 @@ const InterestForm = ({ onSetChartData }) => {
             form={FormNames.COMPOUND}
             activeForm={activeForm}
           />
-          <StyledInput type="submit">CALCULATE</StyledInput>
+          <StyledInput
+            onClick={() => {
+              document.location.href = "#calculator-line-chart";
+            }}
+            type="submit"
+          >
+            CALCULATE
+          </StyledInput>
         </InputWrapper>
       </StyledForm>
       {InfoText.info.map((info, index) => {

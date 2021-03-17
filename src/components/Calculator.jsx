@@ -20,6 +20,18 @@ const ChartWrapper = styled.div`
   border-radius: 0.5rem;
 `;
 
+const TotalAmountIndicator = styled.div`
+  display: flex;
+  padding-bottom: 1rem;
+  justify-content: center;
+`;
+
+const TotalAmountText = styled.div`
+  font-face: Roboto-Medium;
+  font-size: 35px;
+  text-align: center;
+`;
+
 function Calculator() {
   const [chartData, setChartData] = useState({
     labels: [],
@@ -29,7 +41,15 @@ function Calculator() {
   return (
     <CalculatorWrapper>
       <InterestForm onSetChartData={setChartData} />
-      <ChartWrapper>
+      {chartData.values && chartData.labels && (
+        <TotalAmountIndicator>
+          <TotalAmountText>
+            Total amount after {chartData.labels.length - 1} years is{" $"}
+            {chartData.values[chartData.values.length - 1]}
+          </TotalAmountText>
+        </TotalAmountIndicator>
+      )}
+      <ChartWrapper id="calculator-line-chart">
         <Line
           data={{
             labels: chartData.labels,
